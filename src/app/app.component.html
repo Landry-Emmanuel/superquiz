@@ -1,0 +1,44 @@
+<!-- Navbar fixe -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="/"><img src="/assets/logo_superquiz.png" alt="SuperQuiz"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Accueil</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Quizs</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Admin</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Login</a>
+      </li>
+    </ul>
+    <p class="navbar-text navbar-right">
+      Identifié comme <a href="#" class="navbar-link">Bob</a>
+      <button type="button" class="btn btn-outline-danger btn-sm logout-btn">Déconnexion</button>
+    </p>
+  </div>
+</nav>
+
+<div class="container">
+  <!-- Contenu de la page -->
+  <div class="jumbotron">
+    <h1>{{ appName }}</h1>
+    <p>Bienvenue sur SuperQuiz, une application de quiz créée avec Angular.</p>
+  </div>
+  <!-- Fin du contenu -->
+</div>
+
+<!-- Pied de page -->
+<footer>
+  <div class="container">
+    <p class="text-center">&copy; Copyright 2017</p>
+  </div>
+</footer>

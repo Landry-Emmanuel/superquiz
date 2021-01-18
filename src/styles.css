@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  padding-bottom: 30px;
+}
+.navbar-brand {
+  height: 60px;
+  padding-top: 5px;
+}
+.navbar-brand img {
+  width: 125px;
+}
+.container {
+  margin-top: 20px;
+}
+.card-header {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+}
+.logout-btn {
+  margin-left: 15px;
+}
