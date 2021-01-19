@@ -12,6 +12,7 @@ export class NavbarComponent implements OnInit {
   logo = "/assets/logo_superquiz.png";
   userOption: UserOptions;
   user: User;
+  navItems = ["Accueil", "Quizs", "Admin", "Login"];
 
   constructor() { }
 
