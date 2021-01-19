@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="/"><img src="/assets/logo_superquiz.png" alt="SuperQuiz"></a>
+    <a class="navbar-brand" href="/"><img src={{logo}} alt="SuperQuiz"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -20,7 +20,7 @@
         </li>
         </ul>
         <p class="navbar-text navbar-right">
-        Identifié comme <a href="#" class="navbar-link">Bob</a>
+        Identifié comme <a href="#" class="navbar-link">{{user.name}}</a>
         <button type="button" class="btn btn-outline-danger btn-sm logout-btn">Déconnexion</button>
         </p>
     </div>

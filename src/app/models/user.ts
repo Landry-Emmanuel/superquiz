@@ -14,7 +14,7 @@ export class User {
 
   constructor(options: UserOptions) {
     this.name = options.name;
-    this.name = options.email;
+    this.email = options.email;
     this.photo = options.photo || '';
     this.active = options.active ? true : options.active;
   }
