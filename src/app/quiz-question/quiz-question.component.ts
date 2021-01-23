@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { Question, Answer, Choice } from '../models';
 
@@ -9,20 +9,23 @@ import { Question, Answer, Choice } from '../models';
 })
 export class QuizQuestionComponent implements OnInit {
   // Question en cours
-  question = new Question({
-    id: 12,
-    title: 'En quelle année AngularJS (première version) est-il sorti ?',
-    choices: [
-      { text: '2008'},
-      { text: '2009', isCorrect: true },
-      { text: '2012'},
-      { text: '2014'}
-    ],
-    explanation: 'La version de 2009 est celle développé initialement par Miško Hevery, qui ne travaillait pas encore chez Google.'
-  });
+  // question = new Question({
+  //   id: 12,
+  //   title: 'En quelle année AngularJS (première version) est-il sorti ?',
+  //   choices: [
+  //     { text: '2008'},
+  //     { text: '2009', isCorrect: true },
+  //     { text: '2012'},
+  //     { text: '2014'}
+  //   ],
+  //   explanation: 'La version de 2009 est celle développé initialement par Miško Hevery, qui ne travaillait pas encore chez Google.'
+  // });
+  @Input() question: Question;
+  @Input() answer: Answer;
+  @Output() answerSubmitted = new EventEmitter<Answer>();
 
   // Réponse en cours (réponse "vierge" pour l'instant)
-  answer = new Answer({ questionId: 12 });
+  // answer = new Answer({ questionId: 12 });
 
   submitLabel = "Soumettre";
   submitClass = "btn-primary";
@@ -37,7 +40,7 @@ export class QuizQuestionComponent implements OnInit {
     this.currentQuestion = this.question;
     this.currentAnswer = this.answer;
 
-    this.submited = this.currentAnswer.isAnswered();
+    this.submited = this.answer.isAnswered();
   }
 
   refreshSubmitButton() {
@@ -46,7 +49,7 @@ export class QuizQuestionComponent implements OnInit {
       this.submitClass = "btn-primary";
 
     } else {
-      if(this.currentAnswer.isCorrect) {
+      if(this.answer.isCorrect) {
         this.submitLabel = "CORRECT";
         this.submitClass = "btn-success";
       } else {
@@ -59,20 +62,21 @@ export class QuizQuestionComponent implements OnInit {
   // selectionne un choix
   clickChoice(choice: Choice) {
     if(!this.submited) {
-      this.currentAnswer.hasChoice(choice) ? 
-        this.currentAnswer.removeChoice(choice) :
-        this.currentAnswer.addChoice(choice);
+      this.answer.hasChoice(choice) ? 
+        this.answer.removeChoice(choice) :
+        this.answer.addChoice(choice);
     }
   }
 
   submit() {
-    this.submited = this.currentAnswer.isAnswered();
+    this.submited = this.answer.isAnswered();
+    this.answerSubmitted.emit(this.answer);
 
     this.refreshSubmitButton();
   }
 
   gotoPreviousQuestionTEMP() {
-    this.currentQuestion = new Question({
+    this.question = new Question({
       id: 12,
       title: 'En quelle année AngularJS (première version) est-il sorti ?',
       choices: [
@@ -83,7 +87,7 @@ export class QuizQuestionComponent implements OnInit {
       ],
       explanation: 'La version de 2009 est celle développé initialement par Miško Hevery, qui ne travaillait pas encore chez Google.'
     });  
-    this.currentAnswer = new Answer({ questionId: 12 });
+    this.answer = new Answer({ questionId: 12 });
 
     this.refreshSubmitButton();
   }
@@ -93,7 +97,7 @@ export class QuizQuestionComponent implements OnInit {
     this.submited = false;
     this.refreshSubmitButton();
 
-    this.currentQuestion = new Question({
+    this.question = new Question({
       id: 35,
       title: 'Angular est vraiment trop canon.',
       choices: [
@@ -102,7 +106,7 @@ export class QuizQuestionComponent implements OnInit {
       ],
       explanation: 'À ce stade, comment ne pas en être persuadé ? 😝'
     });
-    this.currentAnswer = new Answer({
+    this.answer = new Answer({
       questionId: 35,
       multipleChoicesAllowed: false
     });

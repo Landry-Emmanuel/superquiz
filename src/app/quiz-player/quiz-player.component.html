@@ -1,0 +1,23 @@
+<h2>{{currentQuiz.title}}</h2>
+<p>{{currentQuiz.description}}</p>
+
+<p *ngIf="!quizStarted">
+    <button class="btn btn-info btn-lg"
+        (click)="quizStarted = true">
+        Démarrer le quiz
+    </button>
+</p>
+
+<ng-container *ngIf="quizStarted">
+    <p>
+        <app-quiz-nav [quiz]="currentQuiz" [question]="currentQuestion" [answers]="currentAnswers"
+            (previous)="previousQuiz($event)" (next)="nextQuiz($event)" (saveQuizSubmission)="saveQuiz($event)">
+        </app-quiz-nav>
+    </p>
+
+    <p>
+        <app-quiz-question [question]="currentQuestion" [answer]="currentAnswer"
+            (answerSubmitted)="receivedAnswer($event)">
+        </app-quiz-question>
+    </p>
+</ng-container>
