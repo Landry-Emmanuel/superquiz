@@ -1,0 +1,28 @@
+<div class="spinner-border" role="status" *ngIf="!quizlist">
+  <span class="sr-only">Loading...</span>
+</div>
+ 
+ <ng-container *ngIf="quizlist">
+  <h1>Liste des quizzes ({{quizlist.length}})</h1>
+
+  <p>
+      <button type="button" class="btn btn-outline-secondary mr-2" (click)="deleteQuiz()">Supprimer</button>
+      <button type="button" class="btn btn-outline-secondary" (click)="addQuiz()">Ajouter</button>
+  </p>
+
+  <div class="row">
+
+    <!-- Premier quiz -->
+    <div class="col-sm-6" *ngFor="let quiz of quizlist">
+      <app-quiz-item [quiz]="quiz">
+      </app-quiz-item>
+    </div>
+
+    <div class="col-sm-6" *ngIf="quizlist.length == 0">
+        <p>
+            Aucun quiz à afficher !
+        </p>
+    </div>
+
+  </div>
+</ng-container> 

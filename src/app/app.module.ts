@@ -5,26 +5,30 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
-import { QuizListComponent } from './quiz-list/quiz-list.component';
-import { QuizQuestionComponent } from './quiz-question/quiz-question.component';
-import { QuizItemComponent } from './quiz-item/quiz-item.component';
-import { QuizPlayerComponent } from './quiz-player/quiz-player.component';
-import { QuizNavComponent } from './quiz-nav/quiz-nav.component';
+import { QuizListComponent } from './quiz/quiz-list/quiz-list.component';
+import { QuizQuestionComponent } from './quiz/quiz-question/quiz-question.component';
+import { QuizItemComponent } from './quiz/quiz-item/quiz-item.component';
+import { QuizPlayerComponent } from './quiz/quiz-player/quiz-player.component';
+import { QuizNavComponent } from './quiz/quiz-nav/quiz-nav.component';
+import { QuizModule } from './quiz/quiz.module';
+import { AppRoutingModule } from './app-routing.module';
+import { LoginComponent } from './common/login/login.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    FooterComponent,
-    QuizListComponent,
-    QuizQuestionComponent,
-    QuizItemComponent,
-    QuizPlayerComponent,
-    QuizNavComponent
+    LoginComponent,
+    FooterComponent
   ],
   imports: [
-    BrowserModule],
+    BrowserModule,
+    HttpClientModule,
+    QuizModule,
+    AppRoutingModule
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

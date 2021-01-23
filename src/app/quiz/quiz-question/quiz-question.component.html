@@ -7,37 +7,37 @@
         Question
       </div>
       <div class="card-body">
-        <h5 class="card-title">{{currentQuestion.title}}</h5>
+        <h5 class="card-title">{{question.title}}</h5>
         <div class="list-group">
           <a href="javascript:void(0)" class="list-group-item list-group-item-action"
-            *ngFor="let choice of currentQuestion.choices"
-            [class.active]="currentAnswer.hasChoice(choice)"
+            *ngFor="let choice of question.choices"
+            [class.active]="answer.hasChoice(choice)"
             (click)="clickChoice(choice)">
 
             {{choice.text}}
           </a>
           <div class="list-group-item d-flex justify-content-end">
             <button class="btn btn-lg" [ngClass]="submitClass"
-              [disabled]="!this.answer.isAnswered() || submited" 
+              [disabled]="!answer.isAnswered() || submited" 
               (click)="submit()">
 
               {{submitLabel}}
             </button>
           </div>
-          <p *ngIf="submited && !currentAnswer.isCorrect">
-            La bonne réponse était : {{currentQuestion.getCorrectChoices()}}
-            {{currentQuestion.explanation}}
+          <p *ngIf="submited && !answer.isCorrect">
+            La bonne réponse était : {{question.getCorrectChoices()}}
+            {{question.explanation}}
           </p>
         </div>
       </div>
-      <div class="card-footer">
+      <!-- <div class="card-footer">
         <button type="button" class="btn btn-outline-secondary mr-2" (click)="gotoPreviousQuestionTEMP()">
           Question précédente
         </button>
         <button type="button" class="btn btn-outline-secondary" (click)="gotoNextQuestionTEMP()">
           Question suivante
         </button>
-      </div>
+      </div> -->
     </div>
 
   </div>

@@ -5,7 +5,7 @@
 import { Injectable } from '@angular/core';
 
 // Models
-import { Quiz, Question, Answer, AnswersState } from './models';
+import { Quiz, Question, Answer, AnswersState } from '../models';
 
 /**
  * A question/answer pair.

@@ -1,12 +1,18 @@
-<h2>{{currentQuiz.title}}</h2>
-<p>{{currentQuiz.description}}</p>
+<div class="spinner-border" role="status" *ngIf="!currentQuiz">
+    <span class="sr-only">Loading...</span>
+  </div>
 
-<p *ngIf="!quizStarted">
-    <button class="btn btn-info btn-lg"
-        (click)="quizStarted = true">
-        Démarrer le quiz
-    </button>
-</p>
+<ng-container *ngIf="currentQuiz">    
+    <h2>{{currentQuiz.title}}</h2>
+    <p>{{currentQuiz.description}}</p>
+
+    <p *ngIf="!quizStarted">
+        <button class="btn btn-info btn-lg"
+            (click)="startQuiz()">
+            Démarrer le quiz
+        </button>
+    </p>
+</ng-container>
 
 <ng-container *ngIf="quizStarted">
     <p>

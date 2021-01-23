@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Quiz } from '../models';
+import { Router } from '@angular/router';
+import { Quiz } from '../../models';
 
 @Component({
   selector: 'app-quiz-item',
@@ -10,9 +11,13 @@ import { Quiz } from '../models';
 export class QuizItemComponent implements OnInit {
   @Input() quiz: Quiz;
 
-  constructor() { }
+  constructor(private _router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  play(quizId: number) {
+    this._router.navigate(['quiz', quizId]);  // => quiz/:quizId
   }
 
 }
