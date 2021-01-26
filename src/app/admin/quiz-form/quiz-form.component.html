@@ -1,21 +1,26 @@
-<form novalidate>
+<div class="spinner-border" role="status" *ngIf="!quizInitialised">
+  <span class="sr-only">Loading...</span>
+</div>
 
-  <div class="form-group">
-    <label class="control-label">Titre*</label>
-    <input type="text" class="form-control" placeholder="Titre">
-  </div>
+<form *ngIf="quizInitialised" novalidate [formGroup]="quizForm" (ngSubmit)="saveQuizForm()">
 
-  <div class="form-group">
-    <label class="control-label">Description</label>
-    <textarea class="form-control" placeholder="Description" rows="3"></textarea>
-  </div>
+  <app-field label="Titre" [control]="quizForm.get('title')">
+    <input type="text" class="form-control" placeholder="Titre" formControlName="title"
+      [class.is-invalid]="quizForm.get('title').touched && quizForm.get('title').invalid">
+  </app-field>
 
-  <div class="form-group">
-    <label class="control-label">Peut ré-essayer les questions</label>
-    <input type="checkbox">
-  </div>
+  <app-field label="Description" [control]="quizForm.get('description')">
+    <textarea class="form-control" placeholder="Description" rows="3" formControlName="description">
+    </textarea>
+  </app-field>
 
-  <button type="submit" class="btn btn-primary">Enregistrer</button>
-  <a routerLink="..">Annuler</a>
+  <app-field label="Peut ré-essayer les questions" [control]="quizForm.get('canRetryQuestion')">
+    <input type="checkbox" formControlName="canRetryQuestion">
+  </app-field>
+
+  <button type="submit" class="btn btn-primary" [disabled]="quizForm.invalid">
+    Enregistrer
+  </button>
+  <a class="btn" routerLink="..">Annuler</a>
 
 </form>

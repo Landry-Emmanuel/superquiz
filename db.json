@@ -190,12 +190,11 @@
     },
     {
       "id": 569,
-      "title": "ddsd",
-      "description": "",
+      "title": "Quiz ",
+      "description": "Test de savegarde",
       "canRetryQuestion": false,
       "questions": [
         {
-          "multipleChoicesAllowed": false,
           "id": 1,
           "questionType": "multiple_choice",
           "title": "Q1",
@@ -212,6 +211,13 @@
           ]
         }
       ]
+    },
+    {
+      "id": 570,
+      "title": "Nouveau Quiz",
+      "description": "Ceci est un nouveau quiz !",
+      "canRetryQuestion": true,
+      "questions": []
     }
   ],
   "submissions": [],

@@ -11,13 +11,13 @@ import { Quiz } from '../../models';
 export class QuizItemComponent implements OnInit {
   @Input() quiz: Quiz;
 
-  constructor(private _router: Router) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
   play(quizId: number) {
-    this._router.navigate(['quiz', quizId]);  // => quiz/:quizId
+    this.router.navigate(['quiz', quizId]);  // => quiz/:quizId
   }
 
 }

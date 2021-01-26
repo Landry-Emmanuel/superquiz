@@ -23,12 +23,12 @@ export class QuizPlayerComponent implements OnInit {
 
   constructor(private _quizService: QuizService,
               private _quizStateManagerService: QuizStateManager,
-              private _activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute) {
 
   }
 
   ngOnInit(): void {
-    const params = this._activatedRoute.snapshot.paramMap;
+    const params = this.activatedRoute.snapshot.paramMap;
 
     this._quizService.loadQuiz(Number(params.get('quizId'))).subscribe(
       (quiz) => {

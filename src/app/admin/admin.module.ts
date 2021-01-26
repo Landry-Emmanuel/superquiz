@@ -11,6 +11,8 @@ import { QuestionFormComponent } from './question-form/question-form.component';
 import { ObservablesComponent } from './observables/observables.component';
 
 import { FakeQuizService } from './fake-quiz.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 const routes: Routes = [
   {
@@ -31,7 +33,9 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forChild(routes),
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule,
+    SharedModule
   ],
   declarations: [
     PageAdminComponent,
