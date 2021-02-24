@@ -23,7 +23,8 @@ export class ObservablesComponent {
 
     obs
       // Log the data coming out of the Observable to the screen.
-      .pipe(tap(data => this.log(data), null, () => this.log('Fini')))
+      .pipe(
+        tap(data => this.log(data), null, () => this.log('Fini')))
 
       // Subscribing will execute the observable.
       .subscribe();
@@ -41,7 +42,7 @@ export class ObservablesComponent {
     const transformedObs = originalObs
         .pipe(
           // @TODO: Transformer l'observable ici. Par exemple :
-          map(val => val)
+          map(val => val*10)
         );
 
     return transformedObs;
@@ -49,8 +50,18 @@ export class ObservablesComponent {
 
   // Logs values to the screen.
   private log(val: any): void {
-    console.log(val);
-    this.logs.push(val as string);
+   // if(1) {
+    if(/*String(val) || */val <= 40) {
+      const url = `${this.ROOT_URL}/${val}`;
+
+      this.http.get(url).subscribe(
+        (data: any) => {
+          val = data.id + ': ' + data.title;
+          console.log(val);
+          this.logs.push(val as string);
+        }
+      );
+    }
   }
 
 }

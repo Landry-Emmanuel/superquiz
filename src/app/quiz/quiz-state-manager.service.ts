@@ -23,6 +23,8 @@ export class QuizStateManager {
   private _currentQuestionIndex!: number;
   private _allAnswers!: AnswersState;
 
+  hasPendingChanges: boolean;
+
   /**
    * Public API.
    */
